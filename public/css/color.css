@@ -1,0 +1,99 @@
+/* For back color of the nav */
+#nav9 > ul {
+background-color:#006CFF;
+}
+
+/* For main nav links */
+#nav9 > ul > li >a {
+color:#f0f0f0;
+}
+
+/* For hover state of main nav links */
+#nav9 > ul > li:hover > a {
+color:#006CFF;
+background-color:#ffffff;
+}
+
+/* For sublevel menu links coloring */
+#nav9 > ul > li .menu >li>a {
+color:#f0f0f0;
+background-color:#006CFF;
+}
+
+/* For sublevel menu links hover state */
+#nav9 > ul > li .menu >li:hover>a {
+color:#006CFF;
+background-color:#ffffff;
+}
+
+/* For adding a green colored top border to sublevel menu and megamenu */
+#nav9 > ul > li > .menu, #nav9 > ul > li > .megamenu {
+border-top:4px solid #20B2AA;
+}
+
+/* For group heading, of megamenu, coloring */
+#nav9 > ul > li > .megamenu h3 {
+color:#006CFF;
+}
+
+/* For hover state of megamenu group item list */
+#nav9 > ul > li > .megamenu > div > ul > li > a:hover {
+color:#f0f0f0;
+background-color:#006CFF;
+}
+
+/*--------------------------------------------------------------------*/
+/* For back color of the nav */
+#nav10 > ul {
+background-color:#ffffff;
+}
+
+/* For main nav links */
+#nav10 > ul > li >a {
+color:#777777;
+}
+
+/* For Home link */
+#nav10 > ul > li:first-child > a {
+color:#006CFF;
+}
+
+/* For hover state of main nav links */
+#nav10 > ul > li:hover > a {
+color:#f0f0f0;
+background-color:#006CFF;
+}
+
+/* For hover state of Home link */
+#nav10 > ul > li:first-child:hover > a {
+color:#f0f0f0;
+background-color:#006CFF;
+}
+
+/* For sublevel menu links coloring */
+#nav10 > ul > li .menu >li>a {
+color:#777777;
+background-color:#ffffff;
+}
+
+/* For sublevel menu links hover state */
+#nav10 > ul > li .menu >li:hover>a {
+color:#f0f0f0;
+background-color:#006CFF;
+}
+
+/* For adding a green colored top border to sublevel menu and megamenu */
+#nav10 > ul > li > .menu, #nav10 > ul > li > .megamenu {
+border-top:4px solid #006CFF;
+}
+
+/* For group heading, of megamenu, coloring */
+#nav10 > ul > li > .megamenu h3 {
+color:#006CFF;
+}
+
+/* For hover state of megamenu group item list */
+#nav10 > ul > li > .megamenu > div > ul > li > a:hover {
+color:#f0f0f0;
+background-color:#006CFF;
+}
