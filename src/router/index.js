@@ -30,11 +30,6 @@ const routes = [
     name: 'accueil',
     component: () => import('../views/Accueil.vue'),
   },
-  {
-    path: '/accueil2',
-    name: 'accueil2',
-    component: () => import('../views/Login2.vue'),
-  },
 
 ];
 
