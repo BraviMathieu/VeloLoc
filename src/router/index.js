@@ -38,7 +38,7 @@ const routes = [
   {
     path: '/velos/:idVelos',
     name: 'detailsVelo',
-    component: () => import('../views/detailsVelo.vue'),
+    component: () => import('../views/DetailsVelo.vue'),
   },
   {
     path: '/paiements',
