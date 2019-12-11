@@ -30,7 +30,16 @@ const routes = [
     name: 'accueil',
     component: () => import('../views/Accueil.vue'),
   },
-
+  {
+    path: '/velos',
+    name: 'velos',
+    component: () => import('../views/Velos.vue'),
+  },
+  {
+    path: '/velos/:idVelos',
+    name: 'detailsVelo',
+    component: () => import('../views/detailsVelo.vue'),
+  },
 ];
 
 const router = new VueRouter({
