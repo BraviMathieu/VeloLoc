@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Velo from '@/components/velo.vue';
+import Velo from '@/components/Velo.vue';
 
 
 export default {
