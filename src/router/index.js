@@ -35,6 +35,16 @@ const routes = [
     name: 'accueil2',
     component: () => import('../views/Login2.vue'),
   },
+  {
+    path: '/velos',
+    name: 'velos',
+    component: () => import('../views/Velos.vue'),
+  },
+  {
+    path: '/velos/:idVelos',
+    name: 'detailsVelo',
+    component: () => import('../views/detailsVelo.vue'),
+  },
 
 ];
 

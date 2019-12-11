@@ -37,7 +37,7 @@
             <li><a href="#">Link #6 - Level 1</a></li>
           </ul>
         </li>
-        <li><a href="#"><i class="fas fa-bicycle "></i><span>Nos vélos</span></a></li>
+        <li><a href="/velos"><i class="fas fa-bicycle "></i><span>Nos vélos</span></a></li>
         <li><a href="/posts"><i class="fas fa-envelope"></i><span>Post</span></a></li>
         <li><a href=""><i class="fas fa-user"></i><span>Mon compte
           <i class="fa fa-chevron-down"></i></span></a>
