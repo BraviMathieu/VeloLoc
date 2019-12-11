@@ -40,6 +40,17 @@ const routes = [
     name: 'detailsVelo',
     component: () => import('../views/DetailsVelo.vue'),
   },
+  {
+    path: '/paiements',
+    name: 'paiements',
+    component: () => import('../views/Paiements.vue'),
+  },
+  {
+    path: '/payer',
+    name: 'payer',
+    component: () => import('../views/Payer.vue'),
+  },
+
 ];
 
 const router = new VueRouter({
