@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <div ref="card"></div>
     <button v-on:click="purchase">Purchase</button>
   </div>
