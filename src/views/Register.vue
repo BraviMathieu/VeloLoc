@@ -37,6 +37,12 @@
                      v-model="inputMdp" placeholder="Mot de passe...">
               <span class="focus-input"></span>
             </div>
+            <div class="wrap-input">
+              <span class="label-input">Confirmation</span>
+              <input class="input" type="password" name="mdp-confirmation"
+                     v-model="inputMdpConfirmation" placeholder="Confirmation...">
+              <span class="focus-input"></span>
+            </div>
             <input id="submit-btn" type="button" class="register-form-btn" @click="register()"
                    value="Créer un compte">
         </form>
@@ -55,6 +61,7 @@ export default {
       inputPrenom: '',
       inputEmail: '',
       inputMdp: '',
+      inputMdpConfirmation: '',
       erreurBool: false,
       retourBool: false,
       msgError: '',
@@ -70,27 +77,33 @@ export default {
       this.erreurBool = false;
       // Si l'email et le mot de passe ne sont pas vides
       if (this.inputEmail !== '' && this.inputMdp !== '' && this.inputNom !== '' && this.inputPrenom !== '') {
-        fetch('http://localhost:3000/user/', {
-          method: 'POST',
-          body: JSON.stringify({
-            nom: this.inputNom,
-            prenom: this.inputPrenom,
-            email: this.inputEmail,
-            mdp: this.inputMdp,
-          }),
-          headers: {
-            'Content-type': 'application/json',
-          },
-        }).then(response => response.json())
-          .then((responseJson) => {
-            this.inputNom = '';
-            this.inputPrenom = '';
-            this.inputEmail = '';
-            this.inputMdp = '';
-            this.retourBool = true;
-            this.msgReponse = 'L\'utilisateur a été ajouté.';
-            console.log(responseJson);
-          });
+        if (this.inputMdp === this.inputMdpConfirmation) {
+          fetch('http://localhost:3000/user/', {
+            method: 'POST',
+            body: JSON.stringify({
+              nom: this.inputNom,
+              prenom: this.inputPrenom,
+              email: this.inputEmail,
+              mdp: this.inputMdp,
+            }),
+            headers: {
+              'Content-type': 'application/json',
+            },
+          }).then(response => response.json())
+            .then((responseJson) => {
+              this.inputNom = '';
+              this.inputPrenom = '';
+              this.inputEmail = '';
+              this.inputMdp = '';
+              this.inputMdpConfirmation = '';
+              this.retourBool = true;
+              this.msgReponse = 'L\'utilisateur a été ajouté.';
+              console.log(responseJson);
+            });
+        } else {
+          this.erreurBool = true;
+          this.msgError = 'Les mot de passe sont différents.';
+        }
       } else {
         this.erreurBool = true;
         this.msgError = 'Veuillez entrer toutes les informations.';
@@ -206,7 +219,7 @@ export default {
   /*------------------------------------------------------------------
   [ Login100 more ]*/
   .register-more {
-    background-image: url('../bg-01.png');
+    background-image: url('../bg-02.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -333,7 +346,6 @@ export default {
 
   /*------------------------------------------------------------------
   [ Button ]*/
-
 
   .register-form-btn {
     display: -webkit-box;
