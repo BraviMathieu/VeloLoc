@@ -18,13 +18,13 @@
     <ul v-show="velos.length">
       <Velo v-for="velo in velosFiltres" :key="velo._id" :data="velo" >
       </Velo>
-
     </ul>
   </div>
 </template>
 
 <script>
 import Velo from '@/components/Velo.vue';
+
 export default {
   name: 'Velos',
   components: { Velo },
