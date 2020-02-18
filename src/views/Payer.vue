@@ -1,42 +1,58 @@
 <template>
-  <div >
-    <div ref="card"></div>
-    <button v-on:click="purchase">Purchase</button>
-  </div>
+  <form id="payment-form">
+    <div id="card-element">
+      <!--Elements will create input elements here-->
+    </div>
+
+    <!--We'll put the error messages in this element-->
+    <div id="card-errors" role="alert"></div>
+
+    <button id="submit">Pay</button>
+  </form>
 </template>
 
 <script>
+export default {
+  name: 'payer',
+};
+
+// Set your publishable key: remember to change this to your live publishable key in production
+// See your keys here: https://dashboard.stripe.com/account/apikeys
 // eslint-disable-next-line no-undef
-const stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY');
+const stripe = Stripe('pk_test_RaklY8fqgQueX56HMWvoKKmI00XAWwZhah');
 const elements = stripe.elements();
-let card;
+// Set up Stripe.js and Elements to use in checkout form
 const style = {
   base: {
-    border: '1px solid #D8D8D8',
-    borderRadius: '4px',
-    color: '#000',
-  },
-  invalid: {
-    // All of the error styles go inside of here.
+    color: '#32325d',
   },
 };
 
-export default {
-  mounted: function mounted() {
-    card = elements.create('card', style);
-    card.mount(this.$refs.card);
-  },
-  purchase: function purchase() {
-    const self = this;
-    stripe.createToken(card).then((result) => {
-      if (result.error) {
-        self.hasCardErrors = true;
-        return self.$forceUpdate(); // Forcing the DOM to update so the Stripe Element can update.
-      }
-      return null;
-    });
-  },
-};
+const card = elements.create('card', { style });
+card.mount('#card-element');
+
+card.addEventListener('change', ({ error }) => {
+  const displayError = document.getElementById('card-errors');
+  if (error) {
+    displayError.textContent = error.message;
+  } else {
+    displayError.textContent = '';
+  }
+});
+
+// eslint-disable-next-line no-unused-vars
+function stripeTokenHandler(token) {
+  // Insert the token ID into the form so it gets submitted to the server
+  const form = document.getElementById('payment-form');
+  const hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripeToken');
+  hiddenInput.setAttribute('value', token.id);
+  form.appendChild(hiddenInput);
+
+  // Submit the form
+  form.submit();
+}
 </script>
 
 <style scoped>
