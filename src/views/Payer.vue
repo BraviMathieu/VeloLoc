@@ -1,14 +1,20 @@
 <template>
-  <form id="payment-form">
-    <div id="card-element">
-      <!--Elements will create input elements here-->
-    </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="container">
+        <form id="payment-form">
+          <div id="card-element">
+            <!--Elements will create input elements here-->
+          </div>
 
-    <!--We'll put the error messages in this element-->
-    <div id="card-errors" role="alert"></div>
-    <div id="card-success" role="alert"></div>
-    <button id="submit">Pay</button>
-  </form>
+          <!--We'll put the error messages in this element-->
+          <div id="card-errors" role="alert"></div>
+          <div id="card-success" role="alert"></div>
+          <button id="submit">Pay</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -38,7 +44,7 @@ function stripeLaunch() {
   });
 
   const form = document.getElementById('payment-form');
-  const clientSecret = 'pi_1GDYnvA8vJqX70O53rFUVUlV_secret_81rmmNwoUY2mzLxz5v1G9Dnow'; // a changer depuis le serveur pour le moment a chaque requête
+  const clientSecret = 'pi_1GDYsKA8vJqX70O5fsKKlK8S_secret_nq6LUxZ2Asda9CIGAMb05lK4h'; // a changer depuis le serveur pour le moment a chaque requête
   form.addEventListener('submit', (ev) => {
     ev.preventDefault();
     // eslint-disable-next-line no-undef
