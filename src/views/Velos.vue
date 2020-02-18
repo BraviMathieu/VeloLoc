@@ -18,7 +18,6 @@
     <ul v-show="velos.length">
       <Velo v-for="velo in velosFiltres" :key="velo._id" :data="velo" >
       </Velo>
-
     </ul>
   </div>
 </template>
@@ -26,9 +25,7 @@
 <script>
 import Velo from '@/components/Velo.vue';
 
-
 export default {
-
   name: 'Velos',
   components: { Velo },
   computed: {
@@ -50,7 +47,6 @@ export default {
         return this.velos.filter(velo => velo.marque.nom.toLowerCase()
           .startsWith(this.selected.toLowerCase()));
       }
-
       return this.velos;
     },
   },
@@ -73,10 +69,7 @@ export default {
       .then(res => res.json())
       .then((lesMarques) => { this.marques = lesMarques.marques; });
   },
-
 };
-
-
 </script>
 
 <style scoped>
