@@ -1,6 +1,6 @@
 <template>
 <div>
-  <p>woulah ça marche</p>
+<p>Marque du vélo</p>
 </div>
 </template>
 
