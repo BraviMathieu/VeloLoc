@@ -1,14 +1,13 @@
 <template>
   <div class="row">
-    <div class="col-lg-12">
-      <div v-if="erreurBool" class="alert alert-danger" role="alert">
-        {{msgError}}
-      </div>
+    <div v-if="erreurBool" class="alert alert-danger" role="alert">
+      {{msgError}}
     </div>
+
     <div class="container-login">
       <div class="login-more"></div>
       <div class="wrap-login">
-        <form id="login-form" class="login-form validate-form">
+        <div id="login-form" class="login-form validate-form">
           <h1 class="login-form-title">Se connecter</h1>
           <div class="wrap-input">
             <span class="label-input">E-mail</span>
@@ -24,7 +23,7 @@
           </div>
           <input id="submit-btn" type="button" class="login-form-btn" @click="login()"
           value="Se connecter">
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -63,7 +62,9 @@ export default {
             if ('message' in responseJson) {
               this.erreurBool = false;
               // redirection vers l'accueil
-              this.$router.push('Accueil');
+              const idUser = responseJson.message;
+
+              this.$router.push({ name: 'accueil', params: { idUser } });
             } else if ('error' in responseJson) {
               this.erreurBool = true;
               this.msgError = 'Email ou mot de passe invalide.';
