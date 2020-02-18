@@ -1,7 +1,7 @@
 <template>
   <div >
     <div ref="card"></div>
-    <button v-on:click="purchase">Purchase</button>
+    <button @click="purchase()">Purchase</button>
   </div>
 </template>
 
@@ -26,15 +26,17 @@ export default {
     card = elements.create('card', style);
     card.mount(this.$refs.card);
   },
-  purchase: function purchase() {
-    const self = this;
-    stripe.createToken(card).then((result) => {
-      if (result.error) {
-        self.hasCardErrors = true;
-        return self.$forceUpdate(); // Forcing the DOM to update so the Stripe Element can update.
-      }
-      return null;
-    });
+  methods: {
+    purchase() {
+      const self = this;
+      stripe.createToken(card).then((result) => {
+        if (result.error) {
+          self.hasCardErrors = true;
+          return self.$forceUpdate(); // Forcing the DOM to update so the Stripe Element can update.
+        }
+        return null;
+      });
+    },
   },
 };
 </script>
