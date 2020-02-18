@@ -1,17 +1,17 @@
 <template>
   <div>
-  <h3>{{data.marque.nom}}</h3>
-    <p>{{data.nomVelo}}</p>
-    <p>{{data.prix}}</p>
-    <router-link to="/velos/data._prix">Details</router-link>
+    <p>{{leVelo.marque.nom}}<p/>
+    <p>{{leVelo.nomVelo}}</p>
+    <p>{{leVelo.prix}}€</p>
+    <router-link :to="'/velos/'+leVelo._id">Details</router-link>
  </div>
 </template>
 
 <script>
 export default {
-  name: 'marque',
+  name: 'Velo',
   props: {
-    data: Object,
+    leVelo: Object,
   },
 };
 </script>
