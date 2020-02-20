@@ -7,11 +7,16 @@
       <div class="wrap-modify">
         <div id="modify-form" class="modify-form validate-form">
           <h1 class="modify-form-title">Modifier mes informations</h1>
-          <div class="wrap-image">
+          <div class="wrap-image text-center">
             <span class="label-input">Avatar</span>
             <br>
-            <img src="https://photos-a-la-con.fr/wp-content/uploads/2020/01/5da6cd98210000140f34a123-1000x500.jpeg" class="img-thumbnail">
+            <img :src="`data:image/png;base64,${inputImgBase64}`"
+                 class="img-thumbnail rounded-circle"/>
+            <input class="input text-center" type="file" name="avatar" accept="image/*"
+                   @change="selectedImage">
+
           </div>
+            <input id="imagebase64" class="input" type="text" name="avatar" hidden>
           <div class="wrap-input">
             <br><br>
             <span class="label-input">Nom</span>
@@ -50,32 +55,36 @@ export default {
       inputNom: '',
       inputPrenom: '',
       inputEmail: '',
+      inputImgBase64: '',
     };
   },
   mounted() {
-    fetch('http://localhost:3000/user/5e4bf465799eac09e09d0eca', {
+    fetch('http://localhost:3000/user/5dcab2785bde9d1b7438bba3', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
       },
     }).then(response => response.json())
       .then((responseJson) => {
-        console.log(responseJson.user);
         this.inputNom = responseJson.user.nom;
         this.inputPrenom = responseJson.user.prenom;
         this.inputEmail = responseJson.user.email;
+        this.inputImgBase64 = responseJson.user.image;
       });
   },
   methods: {
     modify() {
       // Si les informations ne sont pas vides
       if (this.inputEmail !== '' && this.inputNom !== '' && this.inputPrenom !== '') {
-        fetch('http://localhost:3000/user/5e4bf465799eac09e09d0eca', {
+        const datab64 = document.getElementById('imagebase64').value;
+        console.log(datab64);
+        fetch('http://localhost:3000/user/5dcab2785bde9d1b7438bba3', {
           method: 'PUT',
           body: JSON.stringify({
             nom: this.inputNom,
             prenom: this.inputPrenom,
             email: this.inputEmail,
+            image: datab64,
           }),
           headers: {
             'Content-type': 'application/json',
@@ -88,6 +97,9 @@ export default {
               text: 'Vos informations ont été enregistrées',
               position: 'top center',
             });
+            if (datab64 !== '') {
+              this.inputImgBase64 = datab64;
+            }
           });
       } else {
         this.$notify({
@@ -99,16 +111,27 @@ export default {
         });
       }
     },
+    selectedImage(event) {
+      const monImage = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsBinaryString(monImage);
+
+      reader.onload = (function (e) {
+        const binaryData = e.target.result;
+        const base64String = window.btoa(binaryData);
+        // Obligé d'utiliser un input en hidden, pas possible d'utiliser les v-model
+        document.getElementById('imagebase64').value = base64String;
+      });
+    },
   },
 };
 </script>
 
-
 <style scoped>
 
-
   .img-thumbnail{
-    max-width: 500px;
+    width: 300px;
+    height: 300px;
   }
 
   /*---------------------------------------------*/
@@ -345,6 +368,7 @@ export default {
     box-shadow: inset 0 0 10px #000000;
     cursor: pointer;
   }
+
 
   /*//////////////////////////////////////////////////////////////////
   [ Responsive ]*/
