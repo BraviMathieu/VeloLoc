@@ -1,20 +1,40 @@
 <template>
 <div>
-<p>Marque du vélo</p>
+  <Nav></Nav>
+<h2>{{velos.nomVelo}}</h2>
+  <p>{{velos.marque.nom}}</p>
+  <p>{{velos.image}}</p>
+  <img :src="require('../assets/'+velos.image)" width="225" height="225"/>
+
+  <p>{{velos.prix}}€</p>
+  <button class="btn btn-default btn-lg">Louer</button>
 </div>
 </template>
 
 <script>
+import Nav from '@/components/Nav.vue';
+
 export default {
   name: 'detailsVelo',
+  components: { Nav },
   created() {
-    fetch('http://localhost:3000/velo')
+    fetch(`http://localhost:3000/velo/${this.$route.params.idVelos}`)
       .then(res => res.json())
-      .then((lesVelos) => { this.velos = lesVelos.velos; this.loading = false; });
+      .then((lesVelos) => { this.velos = lesVelos.velo; this.loading = false; });
     fetch('http://localhost:3000/marque')
       .then(res => res.json())
       .then((lesMarques) => { this.marques = lesMarques.marques; });
+    console.log(this.$route.params.idVelos);
+    console.log(this.velos);
   },
+  data: function data() {
+    return {
+      velos: {},
+    };
+  },
+  methods: {
+  },
+
 };
 
 </script>

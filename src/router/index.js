@@ -45,6 +45,11 @@ const routes = [
     name: 'payer',
     component: () => import('../views/Payer.vue'),
   },
+  {
+    path: '/paiementreussi',
+    name: 'paiementreussi',
+    component: () => import('../views/PaiementReussi.vue'),
+  },
 
 ];
 
