@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="jumbotron">
     <p>{{leVelo.marque.nom}}<p/>
     <p>{{leVelo.nomVelo}}</p>
     <p>{{leVelo.prix}}€</p>
