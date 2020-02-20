@@ -1,5 +1,6 @@
 <template>
   <div>
+ <Nav></Nav>
     <h2>Velos</h2>
     <div>
     <p>Marque</p>
@@ -27,12 +28,12 @@
 
 <script>
 import Velo from '@/components/Velo.vue';
-
+import Nav from '@/components/Nav.vue';
 
 export default {
 
   name: 'Velos',
-  components: { Velo },
+  components: { Nav, Velo },
   computed: {
 
     velosFiltres: function velosFiltres() {
