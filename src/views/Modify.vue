@@ -1,44 +1,38 @@
 <template>
+
   <div>
     <Nav></Nav>
     <br>
     <div class="container-modify">
-      <div class="register-more"></div>
       <div class="wrap-modify">
-        <div id="register-form" class="modify-form validate-form">
-          <h1 class="modify-form-title">Créer un compte</h1>
-            <div class="wrap-input">
-              <span class="label-input">Nom</span>
-              <input class="input" type="text" name="nom"
-                     v-model="inputNom" placeholder="Nom...">
-              <span class="focus-input"></span>
-            </div>
-            <div class="wrap-input">
-              <span class="label-input">Prénom</span>
-              <input class="input" type="text" name="prenom"
-                     v-model="inputPrenom" placeholder="Prénom...">
-              <span class="focus-input"></span>
-            </div>
-            <div class="wrap-input">
-              <span class="label-input">E-mail</span>
-              <input class="input" type="email" name="email"
-                     v-model="inputEmail" placeholder="E-mail...">
-              <span class="focus-input"></span>
-            </div>
-            <div class="wrap-input">
-              <span class="label-input">Mot de passe</span>
-              <input class="input" type="password" name="mdp"
-                     v-model="inputMdp" placeholder="Mot de passe...">
-              <span class="focus-input"></span>
-            </div>
-            <div class="wrap-input">
-              <span class="label-input">Confirmation</span>
-              <input class="input" type="password" name="mdp-confirmation"
-                     v-model="inputMdpConfirmation" placeholder="Mot de passe...">
-              <span class="focus-input"></span>
-            </div>
-            <input id="submit-btn" type="button" class="register-form-btn" @click="register()"
-                   value="Créer un compte">
+        <div id="modify-form" class="modify-form validate-form">
+          <h1 class="modify-form-title">Modifier mes informations</h1>
+          <div class="wrap-image">
+            <span class="label-input">Avatar</span>
+            <br>
+            <img src="https://photos-a-la-con.fr/wp-content/uploads/2020/01/5da6cd98210000140f34a123-1000x500.jpeg" class="img-thumbnail">
+          </div>
+          <div class="wrap-input">
+            <br><br>
+            <span class="label-input">Nom</span>
+            <input class="input" type="text" name="nom"
+                   v-model="inputNom" placeholder="Nom...">
+            <span class="focus-input"></span>
+          </div>
+          <div class="wrap-input">
+            <span class="label-input">Prénom</span>
+            <input class="input" type="text" name="prenom"
+                   v-model="inputPrenom" placeholder="Prénom...">
+            <span class="focus-input"></span>
+          </div>
+          <div class="wrap-input">
+            <span class="label-input">E-mail</span>
+            <input class="input" type="email" name="email"
+                   v-model="inputEmail" placeholder="E-mail...">
+            <span class="focus-input"></span>
+          </div>
+          <input id="submit-btn" type="button" class="register-form-btn" @click="modify()"
+                 value="Modifier">
         </div>
       </div>
     </div>
@@ -49,60 +43,52 @@
 import Nav from '../components/Nav.vue';
 
 export default {
-  name: 'Register',
+  name: 'Modify',
   components: { Nav },
   data: function data() {
     return {
       inputNom: '',
       inputPrenom: '',
       inputEmail: '',
-      inputMdp: '',
-      inputMdpConfirmation: '',
     };
   },
+  mounted() {
+    fetch('http://localhost:3000/user/5e4bf465799eac09e09d0eca', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    }).then(response => response.json())
+      .then((responseJson) => {
+        console.log(responseJson.user);
+        this.inputNom = responseJson.user.nom;
+        this.inputPrenom = responseJson.user.prenom;
+        this.inputEmail = responseJson.user.email;
+      });
+  },
   methods: {
-    /**
-     * Verification des informations et appel de l'API pour créer un compte
-     */
-    register() {
-      // Si l'email et le mot de passe ne sont pas vides
-      if (this.inputEmail !== '' && this.inputMdp !== '' && this.inputNom !== '' && this.inputPrenom !== '') {
-        if (this.inputMdp === this.inputMdpConfirmation) {
-          fetch('http://localhost:3000/user/', {
-            method: 'POST',
-            body: JSON.stringify({
-              nom: this.inputNom,
-              prenom: this.inputPrenom,
-              email: this.inputEmail,
-              mdp: this.inputMdp,
-            }),
-            headers: {
-              'Content-type': 'application/json',
-            },
-          }).then(response => response.json())
-            .then(() => {
-              this.inputNom = '';
-              this.inputPrenom = '';
-              this.inputEmail = '';
-              this.inputMdp = '';
-              this.inputMdpConfirmation = '';
-
-              this.$notify({
-                group: 'veloloc',
-                title: 'Informations envoyées',
-                text: 'L\'utilisateur a été ajouté.',
-                position: 'top center',
-              });
+    modify() {
+      // Si les informations ne sont pas vides
+      if (this.inputEmail !== '' && this.inputNom !== '' && this.inputPrenom !== '') {
+        fetch('http://localhost:3000/user/5e4bf465799eac09e09d0eca', {
+          method: 'PUT',
+          body: JSON.stringify({
+            nom: this.inputNom,
+            prenom: this.inputPrenom,
+            email: this.inputEmail,
+          }),
+          headers: {
+            'Content-type': 'application/json',
+          },
+        }).then(response => response.json())
+          .then(() => {
+            this.$notify({
+              group: 'veloloc',
+              title: 'Informations envoyées',
+              text: 'Vos informations ont été enregistrées',
+              position: 'top center',
             });
-        } else {
-          this.$notify({
-            group: 'veloloc',
-            type: 'error',
-            title: 'Erreur',
-            text: 'Les mots de passe sont différents.',
-            position: 'top center',
           });
-        }
       } else {
         this.$notify({
           group: 'veloloc',
@@ -117,7 +103,13 @@ export default {
 };
 </script>
 
+
 <style scoped>
+
+
+  .img-thumbnail{
+    max-width: 500px;
+  }
 
   /*---------------------------------------------*/
   a {
@@ -199,6 +191,7 @@ export default {
   /*//////////[ login ]*/
 
   .container-modify {
+
     width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -211,6 +204,7 @@ export default {
   }
 
   .wrap-modify {
+    margin: 0 auto !important;
     width: 520px;
     min-height: 100vh;
     background: #fff;
@@ -218,37 +212,8 @@ export default {
     position: relative;
     padding: 40px;
     text-align: left;
+    width: 1200px;
   }
-
-  /*------------------------------------------------------------------
-  [ Login100 more ]*/
-  .register-more {
-    background-image: url('../bg-02.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: calc(100% - 520px);
-    position: relative;
-    z-index: 1;
-  }
-
-  .register-more::before {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: #006CFF;
-    background: -webkit-linear-gradient(bottom, #006CFF, #0031ff);
-    background: -o-linear-gradient(bottom, #006CFF, #0031ff);
-    background: -moz-linear-gradient(bottom, #006CFF, #0031ff);
-    background: linear-gradient(bottom, #006CFF, #0031ff);
-    opacity: 0.8;
-  }
-
   /*==================================================================
   [ Form ]*/
 
@@ -283,6 +248,11 @@ export default {
     position: relative;
     border-bottom: 2px solid #dbdbdb;
     margin-bottom: 45px;
+  }
+
+  .wrap-image{
+    width: 100%;
+    position: relative;
   }
 
   .label-input {
@@ -384,14 +354,6 @@ export default {
       padding-left: 15px;
       padding-right: 15px;
     }
-  }
-
-
-  .monalert{
-    position: fixed;
-    z-index: 500;
-    text-align: center;
-
   }
 
 </style>

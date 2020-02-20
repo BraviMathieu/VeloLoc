@@ -1,14 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home,
+    name: 'accueil',
+    component: () => import('../views/Accueil.vue'),
   },
   {
     path: '/posts',
@@ -16,20 +15,16 @@ const routes = [
     component: () => import('../views/Posts.vue'),
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/Login.vue'),
-  },
-  {
     path: '/register',
     name: 'register',
     component: () => import('../views/Register.vue'),
   },
   {
-    path: '/accueil',
-    name: 'accueil',
-    component: () => import('../views/Accueil.vue'),
+    path: '/modify',
+    name: 'modify',
+    component: () => import('../views/Modify.vue'),
   },
+
   {
     path: '/velos',
     name: 'velos',
@@ -49,6 +44,11 @@ const routes = [
     path: '/payer',
     name: 'payer',
     component: () => import('../views/Payer.vue'),
+  },
+  {
+    path: '/paiementreussi',
+    name: 'paiementreussi',
+    component: () => import('../views/PaiementReussi.vue'),
   },
 
 ];
