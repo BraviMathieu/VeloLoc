@@ -3,6 +3,7 @@
   <div>
     <Nav></Nav>
     <br>
+    <img src="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg">
     <div class="container-modify">
       <div class="wrap-modify">
         <div id="modify-form" class="modify-form validate-form">
@@ -11,7 +12,7 @@
             <span class="label-input">Avatar</span>
             <br>
             <img :src="`data:image/png;base64,${inputImgBase64}`"
-                 class="img-thumbnail rounded-circle"/>
+                 class="darkmode-ignore img-thumbnail rounded-circle"/>
             <input class="input text-center" type="file" name="avatar" accept="image/*"
                    @change="selectedImage">
 
@@ -132,6 +133,10 @@ export default {
   .img-thumbnail{
     width: 300px;
     height: 300px;
+  }
+
+  body{
+    background-color: red !important;
   }
 
   /*---------------------------------------------*/
