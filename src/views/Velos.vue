@@ -1,29 +1,31 @@
 <template>
   <div>
     <NavComponent></NavComponent>
-    <br>
-    <h1 class="modify-form-title">Velos</h1>
-    <div>
-      <p>Marque</p>
-      <select v-model="selected">
-        <option></option>
-        <option v-for="marque in marques" :key="marque._id" :data="marque">{{marque.nom}}</option>
-      </select>
-      <p>
-        <span>Sélectionné : {{ selected }}</span>
-      </p>
-      <div id="nomVelo">
-        <p>Nom vélo</p>
-        <input v-model="recherche">
-        <p>nom du vélo contenant {{recherche}} </p>
+      <div class="container">
+      <br>
+      <h1 class="modify-form-title">Velos</h1>
+      <div>
+        <p>Marque</p>
+        <select v-model="selected">
+          <option></option>
+          <option v-for="marque in marques" :key="marque._id" :data="marque">{{marque.nom}}</option>
+        </select>
+        <p>
+          <span>Sélectionné : {{ selected }}</span>
+        </p>
+        <div id="nomVelo">
+          <p>Nom vélo</p>
+          <input v-model="recherche">
+          <p>nom du vélo contenant {{recherche}} </p>
+        </div>
       </div>
-    </div>
 
-    <p v-if="loading">Chargement en cours...</p>
-    <p v-else-if="!velos.length">Il n'y a pas de velos</p>
-    <ul v-show="velos.length">
-      <Velo v-for="velo in velosFiltres" :le-velo="velo" :key="velo._id" :data="velo"></Velo>
-    </ul>
+      <p v-if="loading">Chargement en cours...</p>
+      <p v-else-if="!velos.length">Il n'y a pas de velos</p>
+      <ul v-show="velos.length">
+        <Velo v-for="velo in velosFiltres" :le-velo="velo" :key="velo._id" :data="velo"></Velo>
+      </ul>
+    </div>
   </div>
 </template>
 

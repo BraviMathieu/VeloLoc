@@ -1,10 +1,12 @@
 <template>
   <div>
     <NavComponent></NavComponent>
-    <h1>Accueil</h1>
-    <InputComponent :params="{type:'text',name:'test',placeholder:'Test...'}"></InputComponent>
-    <p>Bonjour {{nom}}</p>
-    <button type="button" class="btn btn-danger" @click="logout()">Se déconnecter</button>
+    <div class="container">
+      <h1>Accueil</h1>
+      <InputComponent :params="{type:'text',name:'test',placeholder:'Test...'}"></InputComponent>
+      <p>Bonjour {{nom}}</p>
+      <button type="button" class="btn btn-danger" @click="logout()">Se déconnecter</button>
+    </div>
   </div>
 </template>
 

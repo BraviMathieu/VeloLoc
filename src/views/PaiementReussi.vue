@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <br>
     <h1>Le paiement a bien été effectué!</h1> <br>
     <a href="/"><button class="btn btn-outline-primary">Retour à l'accueil</button></a>

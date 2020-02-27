@@ -1,46 +1,48 @@
 <template>
   <div>
     <NavComponent></NavComponent>
-    <br>
-    <div class="container-modify">
-      <div class="register-more"></div>
-      <div class="wrap-modify">
-        <div id="register-form" class="modify-form validate-form">
-          <h1 class="modify-form-title">Créer un compte</h1>
-            <div class="wrap-input">
-              <span class="label-input">Nom</span>
-              <InputComponent :params="{type:'text',name:'nom',placeholder:'Nom...'}"
-                              v-model="inputNom"></InputComponent>
-              <SpanInputAfterComponent></SpanInputAfterComponent>
-            </div>
-            <div class="wrap-input">
-              <span class="label-input">Prénom</span>
-              <InputComponent :params="{type:'text',name:'prenom',placeholder:'Prénom...'}"
-                              v-model="inputPrenom"></InputComponent>
-              <SpanInputAfterComponent></SpanInputAfterComponent>
-            </div>
-            <div class="wrap-input">
-              <span class="label-input">E-mail</span>
-              <InputComponent :params="{type:'email',name:'email',placeholder:'E-mail...'}"
-                              v-model="inputEmail"></InputComponent>
-              <SpanInputAfterComponent></SpanInputAfterComponent>
-            </div>
-            <div class="wrap-input">
-              <span class="label-input">Mot de passe</span>
-              <InputComponent :params="{type:'password',name:'mdp',
-              placeholder:'Mot de passe...'}" v-model="inputMdp"></InputComponent>
-              <SpanInputAfterComponent></SpanInputAfterComponent>
-            </div>
-            <div class="wrap-input">
-              <span class="label-input">Confirmation</span>
-              <InputComponent :params="{type:'password',name:'mdp-confirmation',
-              placeholder:'Mot de passe...'}" v-model="inputMdpConfirmation"></InputComponent>
-              <SpanInputAfterComponent></SpanInputAfterComponent>
-            </div>
-        </div>
-        <div class="text-center">
-          <button id="submit-btn" type="button" class="register-form-btn"
-                 @click="register()">Créer un compte</button>
+    <div class="container">
+      <br>
+      <div class="container-modify">
+        <div class="register-more"></div>
+        <div class="wrap-modify">
+          <div id="register-form" class="modify-form validate-form">
+            <h1 class="modify-form-title">Créer un compte</h1>
+              <div class="wrap-input">
+                <span class="label-input">Nom</span>
+                <InputComponent :params="{type:'text',name:'nom',placeholder:'Nom...'}"
+                                v-model="inputNom"></InputComponent>
+                <SpanInputAfterComponent></SpanInputAfterComponent>
+              </div>
+              <div class="wrap-input">
+                <span class="label-input">Prénom</span>
+                <InputComponent :params="{type:'text',name:'prenom',placeholder:'Prénom...'}"
+                                v-model="inputPrenom"></InputComponent>
+                <SpanInputAfterComponent></SpanInputAfterComponent>
+              </div>
+              <div class="wrap-input">
+                <span class="label-input">E-mail</span>
+                <InputComponent :params="{type:'email',name:'email',placeholder:'E-mail...'}"
+                                v-model="inputEmail"></InputComponent>
+                <SpanInputAfterComponent></SpanInputAfterComponent>
+              </div>
+              <div class="wrap-input">
+                <span class="label-input">Mot de passe</span>
+                <InputComponent :params="{type:'password',name:'mdp',
+                placeholder:'Mot de passe...'}" v-model="inputMdp"></InputComponent>
+                <SpanInputAfterComponent></SpanInputAfterComponent>
+              </div>
+              <div class="wrap-input">
+                <span class="label-input">Confirmation</span>
+                <InputComponent :params="{type:'password',name:'mdp-confirmation',
+                placeholder:'Mot de passe...'}" v-model="inputMdpConfirmation"></InputComponent>
+                <SpanInputAfterComponent></SpanInputAfterComponent>
+              </div>
+          </div>
+          <div class="text-center">
+            <button id="submit-btn" type="button" class="register-form-btn"
+                   @click="register()">Créer un compte</button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,13 +1,15 @@
 <template>
   <div>
     <NavComponent></NavComponent>
-    <h2>{{velos.nomVelo}}</h2>
-    <p>{{velos.marque.nom}}</p>
-    <p>{{velos.image}}</p>
-    <img :src="require('../assets/'+velos.image)" width="225" height="225"/>
+    <div class="container">
+      <h2>{{velos.nomVelo}}</h2>
+      <p>{{velos.marque.nom}}</p>
+      <p>{{velos.image}}</p>
+      <img :src="require('../assets/'+velos.image)" width="225" height="225"/>
 
-    <p>{{velos.prix}}€</p>
-    <button class="btn btn-default btn-lg">Louer</button>
+      <p>{{velos.prix}}€</p>
+      <button class="btn btn-default btn-lg">Louer</button>
+    </div>
   </div>
 </template>
 

@@ -1,13 +1,15 @@
 <template>
   <div>
     <NavComponent></NavComponent>
-    <h2>Paiements</h2>
-    <p v-if="loading" style="text-align: center;">Chargement des paiements en cours...</p>
-    <p v-else-if="!paiements" style="text-align: center;">Il n'y a pas de paiements</p>
-    <div v-show="paiements.length">
-      <Paiement v-for="paiement in paiements" :key="paiement.id" :data="paiement"></Paiement>
+    <div class="container">
+      <h2>Paiements</h2>
+      <p v-if="loading" style="text-align: center;">Chargement des paiements en cours...</p>
+      <p v-else-if="!paiements" style="text-align: center;">Il n'y a pas de paiements</p>
+      <div v-show="paiements.length">
+        <Paiement v-for="paiement in paiements" :key="paiement.id" :data="paiement"></Paiement>
+      </div>
+      <div ref="card"></div>
     </div>
-    <div ref="card"></div>
   </div>
 </template>
 
