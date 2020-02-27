@@ -153,7 +153,7 @@ export default {
   /*------------------------------------------------------------------
   [ Login100 more ]*/
   .register-more {
-    background-image: url('../bg-02.png');
+    background-image: url('../assets/bg-02.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

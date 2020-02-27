@@ -7,12 +7,18 @@
 
 <style lang="scss">
 
+  #nomVelo{
+    visibility: hidden;
+  }
 
+  #prixVelo{
+    visibility: hidden;
+  }
   /*//////////////////////////////////////////////////////////////////
   [ FONT ]*/
 
   html, body{
-    background: url("./bg.svg");
+    background: url("assets/bg.svg");
     background-size: cover;
     background-position-x: 20vw;
     background-position-y: -10vh;

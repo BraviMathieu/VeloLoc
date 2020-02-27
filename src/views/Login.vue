@@ -186,7 +186,7 @@ export default {
   /*------------------------------------------------------------------
   [ Login100 more ]*/
   .login-more {
-    background-image: url('../bg-01.png');
+    background-image: url('../assets/bg-01.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
