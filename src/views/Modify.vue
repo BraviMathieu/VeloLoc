@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <Nav></Nav>
+    <NavComponent></NavComponent>
     <br>
     <div class="container-modify">
       <div class="wrap-modify">
@@ -19,25 +19,28 @@
             <input id="imagebase64" class="input" type="text" name="avatar" hidden>
           <div class="wrap-input">
             <br><br>
+
             <span class="label-input">Nom</span>
-            <input class="input" type="text" name="nom"
-                   v-model="inputNom" placeholder="Nom...">
-            <span class="focus-input"></span>
+            <InputComponent :params="{type:'text',name:'nom',placeholder:'Nom...'}"
+                            v-model="inputNom"></InputComponent>
+            <SpanInputAfterComponent></SpanInputAfterComponent>
           </div>
           <div class="wrap-input">
             <span class="label-input">Prénom</span>
-            <input class="input" type="text" name="prenom"
-                   v-model="inputPrenom" placeholder="Prénom...">
-            <span class="focus-input"></span>
+            <InputComponent :params="{type:'text',name:'prenom',placeholder:'Prénom...'}"
+                            v-model="inputPrenom"></InputComponent>
+            <SpanInputAfterComponent></SpanInputAfterComponent>
           </div>
           <div class="wrap-input">
             <span class="label-input">E-mail</span>
-            <input class="input" type="email" name="email"
-                   v-model="inputEmail" placeholder="E-mail...">
-            <span class="focus-input"></span>
+            <InputComponent :params="{type:'email',name:'email',placeholder:'E-mail...'}"
+                            v-model="inputEmail"></InputComponent>
+            <SpanInputAfterComponent></SpanInputAfterComponent>
           </div>
-          <input id="submit-btn" type="button" class="modify-form-btn" @click="modify()"
-                 value="Modifier">
+          <div class="text-center">
+            <button id="submit-btn" class="modify-form-btn" @click="modify()">Modifier</button>
+          </div>
+
         </div>
       </div>
     </div>
@@ -45,11 +48,13 @@
 </template>
 
 <script>
-import Nav from '../components/Nav.vue';
+import NavComponent from '../components/NavComponent.vue';
+import InputComponent from '../components/InputComponent.vue';
+import SpanInputAfterComponent from '../components/SpanInputAfter.vue';
 
 export default {
   name: 'Modify',
-  components: { Nav },
+  components: { NavComponent, InputComponent, SpanInputAfterComponent },
   data: function data() {
     return {
       inputNom: '',
@@ -148,11 +153,6 @@ export default {
   [ Button ]*/
 
   .modify-form-btn {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 20px;

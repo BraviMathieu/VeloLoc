@@ -102,6 +102,16 @@
 
   /*---------------------------------------------*/
 
+  .modify-form-title {
+    display: block;
+    width: 100%;
+    font-family: Poppins-Bold;
+    font-size: 39px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+    padding-bottom: 59px;
+  }
 
   .container-modify {
     width: 100%;

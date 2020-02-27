@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Nav></Nav>
+    <NavComponent></NavComponent>
     <br>
     <div class="container-modify">
       <div class="register-more"></div>
@@ -9,39 +9,38 @@
           <h1 class="modify-form-title">Créer un compte</h1>
             <div class="wrap-input">
               <span class="label-input">Nom</span>
-              <input class="input" type="text" name="nom"
-                     v-model="inputNom" placeholder="Nom...">
-              <span class="focus-input"></span>
+              <InputComponent :params="{type:'text',name:'nom',placeholder:'Nom...'}"
+                              v-model="inputNom"></InputComponent>
+              <SpanInputAfterComponent></SpanInputAfterComponent>
             </div>
             <div class="wrap-input">
               <span class="label-input">Prénom</span>
-              <input class="input" type="text" name="prenom"
-                     v-model="inputPrenom" placeholder="Prénom...">
-              <span class="focus-input"></span>
+              <InputComponent :params="{type:'text',name:'prenom',placeholder:'Prénom...'}"
+                              v-model="inputPrenom"></InputComponent>
+              <SpanInputAfterComponent></SpanInputAfterComponent>
             </div>
             <div class="wrap-input">
               <span class="label-input">E-mail</span>
-              <input class="input" type="email" name="email"
-                     v-model="inputEmail" placeholder="E-mail...">
-              <span class="focus-input"></span>
+              <InputComponent :params="{type:'email',name:'email',placeholder:'E-mail...'}"
+                              v-model="inputEmail"></InputComponent>
+              <SpanInputAfterComponent></SpanInputAfterComponent>
             </div>
             <div class="wrap-input">
               <span class="label-input">Mot de passe</span>
-              <input class="input" type="password" name="mdp"
-                     v-model="inputMdp" placeholder="Mot de passe...">
-              <span class="focus-input"></span>
+              <InputComponent :params="{type:'password',name:'mdp',
+              placeholder:'Mot de passe...'}" v-model="inputMdp"></InputComponent>
+              <SpanInputAfterComponent></SpanInputAfterComponent>
             </div>
             <div class="wrap-input">
               <span class="label-input">Confirmation</span>
-              <input class="input" type="password" name="mdp-confirmation"
-                     v-model="inputMdpConfirmation" placeholder="Mot de passe...">
-              <span class="focus-input"></span>
+              <InputComponent :params="{type:'password',name:'mdp-confirmation',
+              placeholder:'Mot de passe...'}" v-model="inputMdpConfirmation"></InputComponent>
+              <SpanInputAfterComponent></SpanInputAfterComponent>
             </div>
         </div>
         <div class="text-center">
-          <input id="submit-btn" type="button" class="register-form-btn"
-                 @click="register()"
-                 value="Créer un compte">
+          <button id="submit-btn" type="button" class="register-form-btn"
+                 @click="register()">Créer un compte</button>
         </div>
       </div>
     </div>
@@ -49,11 +48,15 @@
 </template>
 
 <script>
-import Nav from '../components/Nav.vue';
+import NavComponent from '../components/NavComponent.vue';
+import SpanInputAfterComponent from '../components/SpanInputAfter.vue';
+import InputComponent from '../components/InputComponent.vue';
 
 export default {
   name: 'Register',
-  components: { Nav },
+  components: {
+    InputComponent, SpanInputAfterComponent, NavComponent,
+  },
   data: function data() {
     return {
       inputNom: '',
@@ -188,18 +191,6 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
   }
-
-  .modify-form-title {
-    display: block;
-    width: 100%;
-    font-family: Poppins-Bold;
-    font-size: 39px;
-    color: #333333;
-    line-height: 1.2;
-    text-align: center;
-    padding-bottom: 59px;
-  }
-
 
   /*------------------------------------------------------------------
   [ Button ]*/

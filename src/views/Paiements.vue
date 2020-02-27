@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Paiement from '@/components/Paiement.vue';
+import Paiement from '../components/Paiement.vue';
 
 export default {
   name: 'Paiements',

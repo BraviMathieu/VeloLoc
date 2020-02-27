@@ -1,6 +1,6 @@
 <template>
 <div>
-  <Nav></Nav>
+  <NavComponent></NavComponent>
 <h2>{{velos.nomVelo}}</h2>
   <p>{{velos.marque.nom}}</p>
   <p>{{velos.image}}</p>
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import Nav from '@/components/Nav.vue';
+import NavComponent from '../components/NavComponent.vue';
 
 export default {
   name: 'detailsVelo',
-  components: { Nav },
+  components: { NavComponent },
   created() {
     fetch(`http://localhost:3000/velo/${this.$route.params.idVelos}`)
       .then(res => res.json())
