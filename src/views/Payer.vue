@@ -1,32 +1,38 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12">
-        <br>
-        <h1>Paiement</h1>
-        <p>Veuillez renseigner vos coordonées bancaires.</p>
-        <form id="payment-form" @load="stripeLaunch()">
-          <div id="card-element">
-            <!--Elements will create input elements here-->
-          </div>
+  <div>
+    <NavComponent></NavComponent>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12">
           <br>
-          <!--We'll put the error messages in this element-->
-          <div id="card-errors" role="alert"></div>
-          <div id="card-success" role="alert"></div>
-          <div id="redir" role="alert"></div>
-          <br>
-          <button id="submit" class="btn btn-outline-primary">Payer</button>
-          <br>
-          <br>
-          <button id="panier" class="btn btn-outline-secondary">Retour au panier</button>
-        </form>
+          <h1 class="modify-form-title">Paiement</h1>
+          <p>Veuillez renseigner vos coordonées bancaires.</p>
+          <form id="payment-form" @load="stripeLaunch()">
+            <div id="card-element">
+              <!--Elements will create input elements here-->
+            </div>
+            <br>
+            <!--We'll put the error messages in this element-->
+            <div id="card-errors" role="alert"></div>
+            <div id="card-success" role="alert"></div>
+            <div id="redir" role="alert"></div>
+            <br>
+            <button id="submit" class="btn btn-outline-primary">Payer</button>
+            <br>
+            <br>
+            <button id="panier" class="btn btn-outline-secondary">Retour au panier</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import NavComponent from '../components/NavComponent.vue';
+
 export default {
   name: 'payer',
+  components: { NavComponent },
   mounted() {
     this.stripeLaunch();
   },

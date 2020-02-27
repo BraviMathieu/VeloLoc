@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <NavComponent></NavComponent>
     <br>
@@ -13,13 +12,11 @@
             <img :src="`data:image/png;base64,${inputImgBase64}`"
                  class="darkmode-ignore img-thumbnail rounded-circle"/>
             <input class="input text-center" type="file" name="avatar" accept="image/*"
-                   @change="selectedImage">
-
+                   @change="selectedImage"/>
           </div>
-            <input id="imagebase64" class="input" type="text" name="avatar" hidden>
+          <input id="imagebase64" class="input" type="text" name="avatar" hidden/>
           <div class="wrap-input">
             <br><br>
-
             <span class="label-input">Nom</span>
             <InputComponent :params="{type:'text',name:'nom',placeholder:'Nom...'}"
                             v-model="inputNom"></InputComponent>
@@ -40,7 +37,6 @@
           <div class="text-center">
             <button id="submit-btn" class="modify-form-btn" @click="modify()">Modifier</button>
           </div>
-
         </div>
       </div>
     </div>
@@ -53,6 +49,7 @@ import InputComponent from '../components/InputComponent.vue';
 import SpanInputAfterComponent from '../components/SpanInputAfter.vue';
 
 export default {
+  // TODO Enregistrer les images en BLOB
   name: 'Modify',
   components: { NavComponent, InputComponent, SpanInputAfterComponent },
   data: function data() {

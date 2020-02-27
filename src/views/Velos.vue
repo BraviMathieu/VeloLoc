@@ -1,34 +1,35 @@
 <template>
   <div>
- <NavComponent></NavComponent>
-    <h2>Velos</h2>
+    <NavComponent></NavComponent>
+    <br>
+    <h1 class="modify-form-title">Velos</h1>
     <div>
-    <p>Marque</p>
-    <select v-model="selected">
-      <option></option>
-      <option v-for="marque in marques" :key="marque._id" :data="marque">{{marque.nom}}</option>
-    </select>
-    <p><span>Sélectionné : {{ selected }}</span></p>
+      <p>Marque</p>
+      <select v-model="selected">
+        <option></option>
+        <option v-for="marque in marques" :key="marque._id" :data="marque">{{marque.nom}}</option>
+      </select>
+      <p>
+        <span>Sélectionné : {{ selected }}</span>
+      </p>
       <div id="nomVelo">
-    <p>Nom vélo</p>
-    <input v-model="recherche">
-    <p>nom du vélo contenant {{recherche}} </p>
+        <p>Nom vélo</p>
+        <input v-model="recherche">
+        <p>nom du vélo contenant {{recherche}} </p>
       </div>
     </div>
 
     <p v-if="loading">Chargement en cours...</p>
     <p v-else-if="!velos.length">Il n'y a pas de velos</p>
     <ul v-show="velos.length">
-      <Velo v-for="velo in velosFiltres" :le-velo="velo" :key="velo._id" :data="velo" >
-      </Velo>
-
+      <Velo v-for="velo in velosFiltres" :le-velo="velo" :key="velo._id" :data="velo"></Velo>
     </ul>
   </div>
 </template>
 
 <script>
-import Velo from '../components/Velo.vue';
 import NavComponent from '../components/NavComponent.vue';
+import Velo from '../components/Velo.vue';
 
 export default {
 

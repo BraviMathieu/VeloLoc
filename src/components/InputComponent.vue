@@ -1,6 +1,6 @@
 <template>
     <input class="input" :type="params.type" :name="params.name"
-           :placeholder="params.placeholder">
+           :placeholder="params.placeholder"/>
 </template>
 
 <script>

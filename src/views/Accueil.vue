@@ -14,7 +14,7 @@ import InputComponent from '../components/InputComponent.vue';
 
 export default {
   name: 'Accueil',
-  components: { InputComponent, NavComponent },
+  components: { NavComponent, InputComponent },
   data: function data() {
     return {
       nom: '',

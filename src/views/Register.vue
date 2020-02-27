@@ -49,14 +49,13 @@
 
 <script>
 import NavComponent from '../components/NavComponent.vue';
-import SpanInputAfterComponent from '../components/SpanInputAfter.vue';
 import InputComponent from '../components/InputComponent.vue';
+import SpanInputAfterComponent from '../components/SpanInputAfter.vue';
+
 
 export default {
   name: 'Register',
-  components: {
-    InputComponent, SpanInputAfterComponent, NavComponent,
-  },
+  components: { NavComponent, InputComponent, SpanInputAfterComponent },
   data: function data() {
     return {
       inputNom: '',
