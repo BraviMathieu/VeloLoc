@@ -7,13 +7,19 @@
         <div id="modify-form" class="modify-form validate-form">
           <h1 class="modify-form-title">Modifier mes informations</h1>
           <div class="wrap-image text-center">
-            <span class="label-input">Avatar</span>
+            <span class="label-input">Changer de photo</span>
             <br>
-            <img :src="`data:image/png;base64,${inputImgBase64}`"
-                 class="darkmode-ignore img-thumbnail rounded-circle"/>
-            <input class="input text-center" type="file" name="avatar" accept="image/*"
-                   @change="selectedImage"/>
+            <label for="avatar">
+              <div class="opacity-color">
+                <img :src="`data:image/png;base64,${inputImgBase64}`"
+                     class="darkmode-ignore img-thumbnail rounded-circle" id="imageUser"/>
+              </div>
+
+            </label>
+            <input class="input text-center" type="file" name="avatar" id="avatar" accept="image/*"
+                   @change="selectedImage" />
           </div>
+
           <input id="imagebase64" class="input" type="text" name="avatar" hidden/>
           <div class="wrap-input">
             <br><br>
@@ -49,7 +55,7 @@ import InputComponent from '../components/InputComponent.vue';
 import SpanInputAfterComponent from '../components/SpanInputAfter.vue';
 
 export default {
-  // TODO Enregistrer les images en BLOB
+  // TODO Enregistrer les images en GridFS ou BSON
   name: 'Modify',
   components: { NavComponent, InputComponent, SpanInputAfterComponent },
   data: function data() {
@@ -61,7 +67,7 @@ export default {
     };
   },
   mounted() {
-    fetch('http://localhost:3000/user/5dcab2785bde9d1b7438bba3', {
+    fetch('http://localhost:3000/user/5e6752640c0f6908dc2da0a3', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -80,7 +86,7 @@ export default {
       if (this.inputEmail !== '' && this.inputNom !== '' && this.inputPrenom !== '') {
         const datab64 = document.getElementById('imagebase64').value;
         console.log(datab64);
-        fetch('http://localhost:3000/user/5dcab2785bde9d1b7438bba3', {
+        fetch('http://localhost:3000/user/5e6752640c0f6908dc2da0a3', {
           method: 'PUT',
           body: JSON.stringify({
             nom: this.inputNom,
@@ -136,6 +142,19 @@ export default {
     height: 300px;
   }
 
+  .wrap-modify{
+    width: 100%;
+  }
+
+  .opacity-color{
+    background-color: black;
+    border-radius: 50%;
+  }
+  #imageUser:hover{
+    opacity: 0.5;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+  }
   /*//////////[ modify ]*/
 
   /*------------------------------------------------------------------
