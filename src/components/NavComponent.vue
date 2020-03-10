@@ -14,11 +14,11 @@
         </li>
         <li class="nav-item">
           <a href="/paiement" class="nav-link">
-            <span>Paiement</span></a>
+            <span>Panier</span></a>
         </li>
         <li class="nav-item">
           <a href="/payer" class="nav-link">
-            <span>Payer</span></a>
+            <span>Payer</span></a> <!-- à supprimer site final -->
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
