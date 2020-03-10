@@ -6,10 +6,14 @@
         <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12">
           <br>
           <h1 class="modify-form-title">Paiement</h1>
-          <span class="label-input">Nom Du Vélo</span>
-          <p>Prix :{{velos.prix}}€</p>
-          <p>Veuillez renseigner vos coordonées bancaires.</p>
+            <p>Veuillez renseigner vos coordonées bancaires.</p>
           <form id="payment-form" @load="stripeLaunch()">
+            <div class="form-group">
+              <label for="velo-nom">Nom Du Vélo</label>
+              <input type="text" class="form-control" id="velo-nom" :value="velos.nomVelo" disabled>
+              <label for="velo-prix">prix du vélo</label>
+              <input type="text" class="form-control" id="velo-prix"
+                     :value="velos.prix+'€'" disabled>
             <div id="card-element">
               <!--Elements will create input elements here-->
             </div>
@@ -23,6 +27,7 @@
             <br>
             <br>
             <button id="panier" class="btn btn-outline-secondary">Retour au panier</button>
+            </div>
           </form>
         </div>
       </div>
@@ -35,11 +40,8 @@ import NavComponent from '../components/NavComponent.vue';
 export default {
   name: 'payer',
   components: { NavComponent },
-  created() {
-    fetch(`http://localhost:3000/velo/${this.$route.params.idVelos}`)
-      .then(res => res.json())
-      .then((lesVelos) => { this.velos = lesVelos.velo; this.loading = false; });
-  },
+
+
   data: function data() {
     return {
       inputNom: '',
@@ -50,6 +52,10 @@ export default {
   },
   mounted() {
     this.stripeLaunch();
+
+    fetch(`http://localhost:3000/velo/${this.$route.params.idVelos}`)
+      .then(res => res.json())
+      .then((lesVelos) => { this.velos = lesVelos.velo; this.loading = false; });
     fetch('http://localhost:3000/user/5e6752640c0f6908dc2da0a3', {
       method: 'GET',
       body: JSON.stringify({
