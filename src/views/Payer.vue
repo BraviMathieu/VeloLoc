@@ -33,8 +33,29 @@ import NavComponent from '../components/NavComponent.vue';
 export default {
   name: 'payer',
   components: { NavComponent },
+  data: function data() {
+    return {
+      inputNom: '',
+      inputPrenom: '',
+      inputEmail: '',
+    };
+  },
   mounted() {
     this.stripeLaunch();
+    fetch('http://localhost:3000/user/5e6752640c0f6908dc2da0a3', {
+      method: 'GET',
+      body: JSON.stringify({
+        email: this.inputEmail,
+      }),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    }).then(response => response.json())
+      .then((responseJson) => {
+        this.inputNom = responseJson.user.nom;
+        this.inputPrenom = responseJson.user.prenom;
+        this.inputEmail = responseJson.user.email;
+      });
   },
   methods: {
     stripeLaunch() {
@@ -77,7 +98,7 @@ export default {
           payment_method: {
             card,
             billing_details: {
-              name: 'Jenny Rosen',
+              name: `${this.inputPrenom} ${this.inputNom}`,
             },
           },
         })
