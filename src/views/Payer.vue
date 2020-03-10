@@ -80,20 +80,26 @@ export default {
               const err = result.error.message;
               document.getElementById('card-errors').innerText = err;
               console.log(result.error.message);
+              let messageDuration = err.length * 80;
+              // eslint-disable-next-line max-len
+              if (messageDuration > 8000) { messageDuration = 8000; } else if (messageDuration < 2500) { messageDuration = 2500; }
+              console.log(messageDuration);
+              this.$notify({
+                group: 'veloloc',
+                componentName: 'submit',
+                title: 'Transaction refusée',
+                type: 'error',
+                duration: messageDuration,
+                text: `${result.error.message}`,
+              });
               if (err.includes('Votre carte a été refusée.')
                 || err.includes('Votre carte ne dispose pas de fonds suffisants.')) {
-                let messageDuration = err.length * 80;
-                // eslint-disable-next-line max-len
-                if (messageDuration > 8000) { messageDuration = 8000; } else if (messageDuration < 2500) { messageDuration = 2500; }
-                console.log(messageDuration);
                 this.$notify({
                   group: 'veloloc',
-                  componentName: 'submit',
-                  title: 'Transaction refusée',
+                  componentName: 'redir',
+                  text: `Redirection dans ${(messageDuration / 1000).toFixed(0)} secondes...`,
                   type: 'error',
                   duration: messageDuration,
-                  text: `${result.error.message} <br> Redirection dans ${(messageDuration / 1000).toFixed(0)} secondes...`,
-                  position: 'top center',
                 });
                 document.getElementById('submit').disabled = true;
                 document.getElementById('panier').disabled = true;
@@ -105,10 +111,15 @@ export default {
               if (result.paymentIntent.status === 'succeeded') {
                 document.getElementById('submit').disabled = true;
                 document.getElementById('panier').disabled = true;
-                document.getElementById('card-errors')
-                  .remove();
-                document.getElementById('card-success').innerText = 'Paiement réussi!';
-                document.getElementById('redir').innerText = 'Redirection...';
+                document.getElementById('card-errors').remove();
+                this.$notify({
+                  group: 'veloloc',
+                  componentName: 'submit',
+                  title: 'Paiement réussi!',
+                  type: 'success',
+                  duration: 1500,
+                  text: 'Redirection...',
+                });
                 setTimeout(() => { this.$router.push({ path: 'paiementreussi' }); }, 2000);
               }
             }

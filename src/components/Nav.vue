@@ -39,8 +39,9 @@
         </li>
         <li><a href="/velos"><i class="fas fa-bicycle "></i><span>Nos vélos</span></a></li>
         <li><a href="/posts"><i class="fas fa-envelope"></i><span>Post</span></a></li>
-        <li><a href="/paiement"><i class="fas fa-shopping-basket"></i><span>Paiement</span></a></li>
+        <li><a href="/panier"><i class="fas fa-shopping-basket"></i><span>Panier</span></a></li>
         <li><a href="/payer"><i class="fas fa-credit-card"></i><span>Payer</span></a></li>
+        <!-- payer: à supprimer dans le site final -->
         <li><a href=""><i class="fas fa-user"></i><span>Mon compte
               <i class="fa fa-chevron-down"></i></span></a>
           <ul  class="sublevel menu">
