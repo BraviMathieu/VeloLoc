@@ -3,7 +3,7 @@
     <NavComponent></NavComponent>
       <div class="container">
       <br>
-      <h1 class="modify-form-title">Velos</h1>
+      <h2 class="modify-form-title">Velos</h2>
       <div>
         <p>Marque</p>
         <select v-model="selected">
@@ -19,12 +19,12 @@
           <p>nom du vélo contenant {{recherche}} </p>
         </div>
       </div>
-
+        <br>
       <p v-if="loading">Chargement en cours...</p>
       <p v-else-if="!velos.length">Il n'y a pas de velos</p>
-      <ul v-show="velos.length">
+      <div class="row" v-show="velos.length">
         <Velo v-for="velo in velosFiltres" :le-velo="velo" :key="velo._id" :data="velo"></Velo>
-      </ul>
+      </div>
     </div>
   </div>
 </template>
