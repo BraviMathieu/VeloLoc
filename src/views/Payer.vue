@@ -6,6 +6,8 @@
         <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12">
           <br>
           <h1 class="modify-form-title">Paiement</h1>
+          <span class="label-input">Nom Du Vélo</span>
+          <p>Prix :{{velos.prix}}€</p>
           <p>Veuillez renseigner vos coordonées bancaires.</p>
           <form id="payment-form" @load="stripeLaunch()">
             <div id="card-element">
@@ -33,8 +35,18 @@ import NavComponent from '../components/NavComponent.vue';
 export default {
   name: 'payer',
   components: { NavComponent },
+  created() {
+    fetch(`http://localhost:3000/velo/${this.$route.params.idVelos}`)
+      .then(res => res.json())
+      .then((lesVelos) => { this.velos = lesVelos.velo; this.loading = false; });
+  },
   mounted() {
     this.stripeLaunch();
+  },
+  data: function data() {
+    return {
+      velos: {},
+    };
   },
   methods: {
     stripeLaunch() {

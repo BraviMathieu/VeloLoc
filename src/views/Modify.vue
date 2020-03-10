@@ -67,7 +67,7 @@ export default {
     };
   },
   mounted() {
-    fetch('http://localhost:3000/user/5e6752640c0f6908dc2da0a3', {
+    fetch('http://localhost:3000/user/5e67659b8a5e8402703c431e', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',

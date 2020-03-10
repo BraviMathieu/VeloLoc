@@ -41,7 +41,7 @@ const routes = [
     component: () => import('../views/Panier.vue'),
   },
   {
-    path: '/payer',
+    path: '/payer/:idVelos',
     name: 'payer',
     component: () => import('../views/Payer.vue'),
   },

@@ -4,11 +4,11 @@
     <div class="container">
       <h2>{{velos.nomVelo}}</h2>
       <p>{{velos.marque.nom}}</p>
-      <p>{{velos.image}}</p>
       <img :src="require('../assets/'+velos.image)" width="225" height="225"/>
 
       <p>{{velos.prix}}€</p>
-      <button class="btn btn-default btn-lg">Louer</button>
+      <router-link tag="button"  :to="'/payer/'+velos._id"
+                   class="btn btn-primary">Louer</router-link>
     </div>
   </div>
 </template>
