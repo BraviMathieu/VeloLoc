@@ -51,6 +51,7 @@ export default {
         return this.velos.filter(velo => velo.marque.nom.toLowerCase()
           .startsWith(this.selected.toLowerCase()));
       }
+      // ALED
       /* return this.velos.filter(velo => velo.nomVelo.toLowerCase()
         .startsWith(this.recherche.toLowerCase())); */
       return this.velos;
