@@ -7,13 +7,6 @@
 
 <style lang="scss">
 
-  #nomVelo{
-    visibility: hidden;
-  }
-
-  #prixVelo{
-    visibility: hidden;
-  }
   /*//////////////////////////////////////////////////////////////////
   [ FONT ]*/
 
@@ -25,7 +18,7 @@
     background-repeat: no-repeat
   }
 
-  .darkmode--activated h1, .darkmode--activated li {
+  .darkmode--activated h1{
     color: #ffffff !important;
   }
 
