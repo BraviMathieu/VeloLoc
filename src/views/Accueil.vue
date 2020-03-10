@@ -1,18 +1,22 @@
 <template>
   <div>
-    <Nav></Nav>
-    <h1>Accueil</h1>
-    <p>Bonjour {{nom}}</p>
-    <button type="button" class="btn btn-danger" @click="logout()">Se déconnecter</button>
+    <NavComponent></NavComponent>
+    <div class="container">
+      <h1>Accueil</h1>
+      <InputComponent :params="{type:'text',name:'test',placeholder:'Test...'}"></InputComponent>
+      <p>Bonjour {{nom}}</p>
+      <button type="button" class="btn btn-danger" @click="logout()">Se déconnecter</button>
+    </div>
   </div>
 </template>
 
 <script>
-import Nav from '../components/Nav.vue';
+import NavComponent from '../components/NavComponent.vue';
+import InputComponent from '../components/InputComponent.vue';
 
 export default {
   name: 'Accueil',
-  components: { Nav },
+  components: { NavComponent, InputComponent },
   data: function data() {
     return {
       nom: '',
